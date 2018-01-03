@@ -1,0 +1,302 @@
+
+header {
+    text-align: center;
+    font-family: "Arial Nova" ;
+    color: crimson;
+    box-sizing: border-box;
+}
+
+img{
+    height: 100px;
+    width: 80px;
+    border: solid;
+}
+
+
+i{
+
+    color: crimson;
+}
+
+.SimplePDF {
+    width: 350px; /* width of pdf document box should be != 0 */
+    height: 500px; /* height of pdf document box should be != 0 */
+    border: 1px dashed red; /* optional */
+    margin: 15px; /* optional */
+    padding: 15px; /* optional */
+    float: left; /* optional */
+}
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px 0px;
+}
+.row-content {
+    margin: 0px auto;
+    padding: 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px;
+}
+.row-contentlogin {
+    margin: 0px auto;
+    padding: 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 300px;
+}
+.row-footer {
+    margin: 0px 0px;
+    padding: 10px 0px;
+    background-color: #ec971f;
+    /*padding-bottom: 0px;*/
+    /*position:fixed;*/
+    left:0px;
+    bottom:0px;
+    height:170px;
+    width:100%;
+    /*background:#999;*/
+    /*position: absolute;*/
+    position: relative;
+}
+
+
+.jumbotron {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    background-image: url("../images/jumbotron.jpg");
+
+}
+
+.headStyle{
+
+    font-family: Arial, sans-serif;
+    color: white;
+    font-size: 4em;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #761c19;
+}
+.carousel {
+    background: #1a237e;
+}
+.carousel .item {
+    height: 300px;
+}
+.carousel .item img {
+    left: 0;
+    min-height: 300px;
+    position: absolute;
+    top: 0;
+}
+
+.navbar-inverse {
+    background: #303f9f;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > .active > a {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > .active > a:hover {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > .active > a:focus {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > .open > a {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > .open > a:hover {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav > .open > a:focus {
+    background: #1a237e;
+    color: #ffffff;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+    background-color: #1a237e;
+    color: #eeeeee;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover {
+    color: #000000;
+}
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #303f9f;
+    color: #eeeeee;
+}
+address {
+    color: #0f0f0f;
+    font-size: 80%;
+    margin: 0px;
+}
+body {
+    align: center;
+    padding: 50px 0px 0px 0px;
+    z-index: 0;
+}
+.tab-content {
+    border-bottom: 1px solid #dddddd;
+    border-left: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+    padding: 10px;
+}
+.affix {
+    top: 100px;
+}
+#carouselButtons {
+    bottom: 0px;
+    position: absolute;
+    right: 0px;
+}
+.navbar-brand {
+    float: left;
+    height: 100px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.col-sm-4-img{
+    position: relative;
+    min-height: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+#ntext{
+    color: #FFFFFF;
+}
+
+.container > .navbar-header,
+.container-fluid > .navbar-header,
+.container > .navbar-collapse,
+.container-fluid > .navbar-collapse {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+@media (min-width: 768px) {
+    .container > .navbar-header,
+    .container-fluid > .navbar-header,
+    .container > .navbar-collapse,
+    .container-fluid > .navbar-collapse {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: transparent;
+    background-color: #080808;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: transparent;
+    background-color: transparent;
+}
+
+#linkcolor{
+    color: #FFFFFF;
+}
+
+.container {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
+
+.containerFooter {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 0px;
+
+    margin-right: 10px;
+    margin-left: 10px;
+
+    /*position: absolute;*/
+
+}
+
+.nav-link {
+    color: #FFFFFF;
+}
+
+.nav-link:hover {
+    color: #FFFFFF;
+}
+
+.nav-link:active {
+    color: #FFFFFF;
+}
+.nav-link:focus {
+    color: #FFFFFF;
+}
+
+.btnalign{
+   margin-left: 80px;
+    margin-right: 80px;
+}
+
+
+.containerPDF{
+    height: 900px;
+    width: 500px;
+}
+
+.containerButtons{
+    height: 50px;
+    width: 500px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.containerPadding{
+    padding-bottom: 40px;
+}
+
+.containerBox{
+    height: auto;
+}
+
+.trademark{
+    text-align: center;
+}
+
+.bg-color {
+    color: #fff;
+    background-color: #761c19;
+}
+
+.heading{
+    text-align: center;
+}
+
+.imgContact{
+    border-radius: 50%;
+}
+
+
+.headingLogo{
+    font-family: Arial, sans-serif;
+    font-size: 4em;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    color: #ffffff;
+}

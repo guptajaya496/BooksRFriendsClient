@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Learning Angular JS",
+    "author" : "Ken Williamson",
+    "publication":"O'Reilly",
+    "image" : "./images/LearningAngularJS.jpg",
+    "path" : "./files/LearningAngularJS.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Learn ASP.NET",
+    "author" : "Tutorial Point",
+    "publication":"Tutorial Point",
+    "image" : "./images/LearningASP.NET.jpg",
+    "path" : "./files/Learn ASPNET.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "C# Programming",
+    "author" : "Tutorial Point",
+    "publication":"Tutorial Point",
+    "image" : "./images/CProgramming.jpg",
+    "path" : "./files/CProgramming.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "MONGO DB",
+    "author" : "Tutorial Point",
+    "publication":"Tutorial Point",
+    "image" : "./images/MongoDB.png",
+    "path" : "./files/MONGO DB.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Bootstrap Tutorial",
+    "author" : "Tutorial Point",
+    "publication":"Tutorial Point",
+    "image" : "./images/bootstrapTutorial.jpg",
+    "path" : "files/Bootstrap Tutorial.pdf",
+    "featured":"featured"
+  }
+
+]
+,
+[
+{
+        "firstName":"Jaya",
+        "lastName":"Gupta",
+        "dateOfBirth":"07/17/1985",
+        "address":"Sunnyvale",
+        "occupation":"Student",
+        "emailId":"mail2me17@gmail.com",
+        "userName":"mail2me17",
+        "password":"Mastag20",
+        "confirmPassword":"Mastag20"
+
+}
+]
