@@ -18,6 +18,7 @@ class MainBooksList extends Component{
            method:'GET',
            mode: 'cors',
            headers: {
+                'dataType': 'json',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
