@@ -21,16 +21,16 @@ class MainBooksList extends Component{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                 'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                 'Access-Control-Allow-Headers': 'Content-Type'
             }
         })
         .then(results =>{
-            console.log(results.json());
+            //console.log(results.json());
             return results.json();
         })
         .then(json => {
+            console.log(json);
             this.setState({BookList:json})
         });
     }
