@@ -56,3 +56,17 @@
 
 }
 ]
+
+
+[
+{
+"featured":"featured",
+"_id":"5a48adaa9af56f0014337aa4",
+"title":"ASP NET",
+"author":"Tutorial Point",
+"publication":"Tutorial Point",
+"image":"./images/MongoDB.png",
+"path":"./files/MONGO DB.pdf",
+"createdAt":"2017-12-31T09:28:10.110Z",
+"updatedAt":"2017-12-31T09:28:10.110Z"
+},{"featured":"featured","_id":"5a48ae679af56f0014337aa5","title":"ASP tutorial","author":"Tutorial Point","publication":"Tutorial Point","image":"./images/MongoDB.png","path":"./files/MONGO DB.pdf","createdAt":"2017-12-31T09:31:19.016Z","updatedAt":"2017-12-31T09:31:19.016Z","__v":0}]

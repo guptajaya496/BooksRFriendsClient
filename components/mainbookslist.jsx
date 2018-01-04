@@ -26,7 +26,7 @@ class MainBooksList extends Component{
                 'Access-Control-Allow-Headers': 'Content-Type'
             }
         })
-        .then(results =>{
+        .then(results => {
             return results.json();
         })
         .then(json => {
