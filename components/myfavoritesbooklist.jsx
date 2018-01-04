@@ -42,7 +42,6 @@ class MyFavoriteBooksList extends Component{
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                 'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'x-access-token': token
@@ -56,14 +55,13 @@ class MyFavoriteBooksList extends Component{
                 console.log(this.state.MainBookList);
             }
         })
-        .then(fetch(Config.URLBOOKSAPI,{
+        .then(fetch(Config.URLFAVORITESAPI,{
                 method:'GET',
                 mode: 'cors',
                 headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                        //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                         'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                         'Access-Control-Allow-Headers': 'Content-Type',
                         'x-access-token': token
@@ -83,17 +81,19 @@ class MyFavoriteBooksList extends Component{
             .then(res =>{
                 let temp = [];
 
-                if(this.state.FavoriteBookList.length > 0){
-                    for(let i=0; i <this.state.MainBookList.length; i++){
-                        for(let j=0; j<this.state.FavoriteBookList.length; j++){
-                            if(this.state.MainBookList[i]._id === this.state.FavoriteBookList[j]){
-                                temp.push(this.state.MainBookList[i]);
+                if(this.state.FavoriteBookList){
+                    if(this.state.FavoriteBookList.length > 0){
+                        for(let i=0; i <this.state.MainBookList.length; i++){
+                            for(let j=0; j<this.state.FavoriteBookList.length; j++){
+                                if(this.state.MainBookList[i]._id === this.state.FavoriteBookList[j]){
+                                    temp.push(this.state.MainBookList[i]);
+                                }
                             }
                         }
-                    }
 
-                    this.setState({MyFavoriteList:temp});
-                    console.log("temp : " ,temp);
+                        this.setState({MyFavoriteList:temp});
+                        console.log("temp : " ,temp);
+                    }
                 }
             })
         );
@@ -115,8 +115,6 @@ class MyFavoriteBooksList extends Component{
 
         if(token != ''){
 
-            const newMyListState = this.state.MyFavoriteList;
-
             const bookId = bookObj._id;
 
             fetch(Config.URLFAVORITESAPI , {
@@ -126,7 +124,6 @@ class MyFavoriteBooksList extends Component{
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                        //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                         'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                         'Access-Control-Allow-Headers': 'Content-Type',
                         'x-access-token' : token
@@ -147,31 +144,25 @@ class MyFavoriteBooksList extends Component{
                         console.log(this.state.FavoriteBookList);
                     }
                 })
-               .then(res =>{
+                .then(res =>{
                     let temp = [];
 
-                    console.log("HI in Add");
-
-                    console.log(this.state.FavoriteBookList.length , "length of favs" );
-
-                    if(this.state.FavoriteBookList.length > 0){
-
-                        console.log(this.state.MainBookList);
-
-                        for(let i=0; i < this.state.MainBookList.length; i++){
-
-
-                            for(let j=0; j<this.state.FavoriteBookList.length; j++){
-                                if(this.state.MainBookList[i]._id === this.state.FavoriteBookList[j]){
-                                    console.log(this.state.MainBookList[i]);
-                                    temp.push(this.state.MainBookList[i]);
+                    if(this.state.FavoriteBookList){
+                        console.log(this.state.FavoriteBookList.length);
+                        if(this.state.FavoriteBookList.length > 0){
+                            for(let i=0; i <this.state.MainBookList.length; i++){
+                                for(let j=0; j<this.state.FavoriteBookList.length; j++){
+                                    if(this.state.MainBookList[i]._id === this.state.FavoriteBookList[j]){
+                                        temp.push(this.state.MainBookList[i]);
+                                    }
                                 }
                             }
+
+                            this.setState({MyFavoriteList:temp});
+                            console.log("temp : " ,temp);
                         }
-                        this.setState({MyFavoriteList:temp});
-                        console.log("temp : " ,temp);
                     }
-               });
+                });
         }
         else{
             alert("Please login to add to the favorites!!!");
@@ -215,31 +206,62 @@ class MyFavoriteBooksList extends Component{
 
     RemoveFavoriteBookHandler(bookObj){
 
-        let token = localStorage.getItem(ACCESS_TOKEN_KEY);
+        console.log("I am in remove favorites");
+
+        let token = localStorage.getItem(Config.ACCESS_TOKEN_KEY);
 
         const bookId = bookObj._id;
 
-        fetch(Config.URLFAVORITESAPI , {
-            method: 'DELETE',
-            mode: 'cors',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Methods' : ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
-                'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
-                'Access-Control-Allow-Headers': 'Content-Type',
-                'x-access-token': token
-            },
-            body:JSON.stringify({
-                bookId
+        if(token !== ''){
+            fetch(Config.URLFAVORITESAPI , {
+                method: 'DELETE',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Methods' : ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
+                    'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
+                    'Access-Control-Allow-Headers': 'Content-Type',
+                    'x-access-token': token
+                },
+                body:JSON.stringify({
+                    bookId
+                })
             })
-        })
-        .then(results =>{return results.json()})
-        .then(json => {
-            console.log(json);
-            this.setState({MyFavoriteList:json.books});
-        });
+            .then(results =>{return results.json()})
+            .then(json => {
+                console.log(json.books);
+                this.setState({FavoriteBookList:json.books});
+            })
+            .then(res =>{
+                let temp = [];
+
+                if(this.state.FavoriteBookList){
+                    console.log(this.state.FavoriteBookList.length);
+                    if(this.state.FavoriteBookList.length > 0){
+                        for(let i=0; i <this.state.MainBookList.length; i++){
+                            for(let j=0; j<this.state.FavoriteBookList.length; j++){
+                                if(this.state.MainBookList[i]._id === this.state.FavoriteBookList[j]){
+                                    temp.push(this.state.MainBookList[i]);
+                                }
+                            }
+                        }
+
+                        this.setState({MyFavoriteList:temp});
+                        console.log("temp : " ,temp);
+                    }
+                    else{
+                        this.setState({MyFavoriteList:[]});
+                    }
+                }
+            })
+        }
+        else{
+            alert("Please login again !!!");
+            history.push('/logout');
+        }
+
+
     }
 
     openEbookHandler(bookObj){

@@ -53,7 +53,6 @@ class Library extends Component {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                        //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                         'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                         'Access-Control-Allow-Headers': 'Content-Type'
                     },
@@ -92,7 +91,6 @@ class Library extends Component {
                             'Accept': 'application/json',
                             'Content-Type': 'application/json',
                             'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                            //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                             'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                             'Access-Control-Allow-Headers': 'Content-Type'
                         },
@@ -138,7 +136,6 @@ class Library extends Component {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                //'Access-Control-Allow-Origin': Config.ORIGINURLLOCAL,
                 'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
                 'Access-Control-Allow-Headers': 'Content-Type'
             }

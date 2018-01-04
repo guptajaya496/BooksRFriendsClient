@@ -21,9 +21,7 @@ class AboutUs extends Component{
 
 
                 <div className="row row-header">
-                    {/*<div className="col-sm-12">*/}
-                        <Footer/>
-                    {/*</div>*/}
+                    <Footer/>
                 </div>
 
             </div>
