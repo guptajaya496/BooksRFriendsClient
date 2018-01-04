@@ -9,7 +9,7 @@ class Header extends Component{
             <div>
                 <nav className=" navbar-expand-lg bg-color navbar-fixed-top nav " role="navigation">
                     <a className="navbar-brand" href='/'>
-                        <img src="../images/booksRfriendslogo.jpg" alt="logo" style={{width:200+'px'}}></img>
+                        <img src="../images/BooksRFriendsLogo.jpg" alt="logo" style={{width:200+'px'}}></img>
                     </a>
                     <div id="navbar" className="navbar navbar-collapse collapse">
                         <ul className="navbar-nav">
