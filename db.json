@@ -1,18 +1,18 @@
 [
   {
-    "title": "Learning Angular JS",
-    "author" : "Ken Williamson",
-    "publication":"O'Reilly",
-    "image" : "./images/LearningAngularJS.jpg",
-    "path" : "./files/LearningAngularJS.pdf",
+    "title": " ASP.NET MVC",
+    "author" : "Tutorials Point",
+    "publication":"Tutorials Point",
+    "image" : "./images/aspnetmvc.jpg",
+    "path" : "./files/aspnet_mvc_tutorial.pdf",
     "featured":"featured"
   },
   {
-    "title": "Learn ASP.NET",
+    "title": "Bootstrap Tutorial",
     "author" : "Tutorial Point",
     "publication":"Tutorial Point",
-    "image" : "./images/LearningASP.NET.jpg",
-    "path" : "./files/Learn ASPNET.pdf",
+    "image" : "./images/bootstrapTutorial.jpg",
+    "path" : "files/Bootstrap Tutorial.pdf",
     "featured":"featured"
   },
   {
@@ -24,21 +24,103 @@
     "featured":"featured"
   },
   {
-    "title": "MONGO DB",
-    "author" : "Tutorial Point",
-    "publication":"Tutorial Point",
+    "title": "Entity Framework",
+    "author" : "Julia Lerman",
+    "publication":"O'Reilly",
+    "image" : "./images/entityframework.jpg",
+    "path" : "./files/entity_framework_tutorial.pdf",
+    "featured":"featured"
+  },
+
+  {
+    "title": "Head First JAVA",
+    "author" : "Kathy Sierra & Bert Bates",
+    "publication":"O' Reilly",
+    "image" : "./images/headfirstjava.jpg",
+    "path" : "./files/Head_First_Java_2nd_Edition.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "JAVA - The Complete Reference",
+    "author" : "Herbert Schildt",
+    "publication":"Oracle Press",
+    "image" : "./images/javacompletereference.jpg",
+    "path" : "./files/javacompletereference.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Learning Angular JS",
+    "author" : "Ken Williamson",
+    "publication":"O'Reilly",
+    "image" : "./images/LearningAngularJS.jpg",
+    "path" : "./files/LearningAngularJS.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Beginning ASP.NET in C#",
+    "author" : "Matthew MacDonald",
+    "publication":"APress",
+    "image" : "./images/LearningASP.NET.jpg",
+    "path" : "./files/Learn ASPNET.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Learn MySQL",
+    "author" : "Tutorials Point",
+    "publication":"Tutorials Point",
+    "image" : "./images/learnmysql.jpg",
+    "path" : "./files/mysql_tutorial.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Learn PHP",
+    "author" : "Tutorials Point",
+    "publication":"Tutorials Point",
+    "image" : "./images/learnphp.jpg",
+    "path" : "./files/php_tutorial.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Learning MongoDB",
+    "author" : "Daniel Watrous",
+    "publication":"Tutorials Point",
     "image" : "./images/MongoDB.png",
     "path" : "./files/MONGO DB.pdf",
     "featured":"featured"
   },
   {
-    "title": "Bootstrap Tutorial",
-    "author" : "Tutorial Point",
-    "publication":"Tutorial Point",
-    "image" : "./images/bootstrapTutorial.jpg",
-    "path" : "files/Bootstrap Tutorial.pdf",
+    "title": "Node for Front-End Developers",
+    "author" : "Garann Means",
+    "publication":"O'Reilly",
+    "image" : "./images/node.jpg",
+    "path" : "./files/NodeoReilly.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "Node JS",
+    "author" : "Tutorials Point",
+    "publication":"Tutorials Point",
+    "image" : "./images/nodejs.png",
+    "path" : "./files/nodejs_tutorial.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "PYTHON",
+    "author" : "Tutorials Point",
+    "publication":"Tutorials Point",
+    "image" : "./images/python.jpg",
+    "path" : "./files/python_tutorial.pdf",
+    "featured":"featured"
+  },
+  {
+    "title": "RESTful Web Services",
+    "author" : "Leonard Richardson & Sam Ruby",
+    "publication":"O'Reilly",
+    "image" : "./images/restfulwebservices.jpg",
+    "path" : "./files/restful_web_services.pdf",
     "featured":"featured"
   }
+
 
 ]
 ,
