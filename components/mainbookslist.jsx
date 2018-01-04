@@ -26,7 +26,6 @@ class MainBooksList extends Component{
             }
         })
         .then(results =>{
-            //console.log(results.json());
             return results.json();
         })
         .then(json => {
