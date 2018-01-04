@@ -13,7 +13,7 @@ class MainBooksList extends Component{
     }
 
     componentWillMount(){
-
+        console.log(Config.URLBOOKSAPI);
         fetch(Config.URLBOOKSAPI,{
            method:'GET',
            mode: 'cors',
@@ -27,6 +27,7 @@ class MainBooksList extends Component{
             }
         })
         .then(results =>{
+            console.log(results.json());
             return results.json();
         })
         .then(json => {

@@ -1,31 +1,33 @@
+module.exports = {
+    // books url
+    'URLBOOKSLOCAL' : "http://localhost:3443/books",
+    'URLBOOKSAPI' : "https://booksrfriendsapi.herokuapp.com/books",
 
-// books url
-const  URLBOOKSLOCAL = "http://localhost:3443/books";
-const  URLBOOKSAPI = "https://booksrfriendsapi.herokuapp.com/books";
+    // favorites url
+    'URLFAVORITESLOCAL' : "http://localhost:3443/favorites",
+    'URLFAVORITESAPI' : "https://booksrfriendsapi.herokuapp.com/favorites",
 
-// favorites url
-const URLFAVORITESLOCAL = "http://localhost:3443/favorites";
-const URLFAVORITESAPI = "https://booksrfriendsapi.herokuapp.com/favorites";
+    // Login url
+    'URLLOGINLOCAL' : "http://localhost:3443/users/login",
+    'URLLOGINAPI' : "https://booksrfriendsapi.herokuapp.com/users/login",
 
-// Login url
-const URLLOGINLOCAL = "http://localhost:3443/users/login";
-const URLLOGINAPI = "https://booksrfriendsapi.herokuapp.com/users/login";
+    // Register url
+    'URLREGISTERLOCAL' : "http://localhost:3443/users/register",
+    'URLREGISTERAPI' : "https://booksrfriendsapi.herokuapp.com/users/register",
 
-// Register url
-const URLREGISTERLOCAL = "http://localhost:3443/users/register";
-const URLREGISTERAPI = "https://booksrfriendsapi.herokuapp.com/users/register";
+    // Logout url
+    'URLLOGOUTLOCAL' : "http://localhost:3443/users/logout",
+    'URLLOGOUTAPI' : "https://booksrfriendsapi.herokuapp.com/users/logout",
 
-// Logout url
-const URLLOGOUTLOCAL = "http://localhost:3443/users/logout";
-const URLLOGOUTAPI = "https://booksrfriendsapi.herokuapp.com/users/logout";
+    // origin url
+    'ORIGINURLLOCAL' : "http://localhost:8080",
+    'ORIGINURLAPP' : "https://booksrfriendsapp.herokuapp.com",
 
-// origin url
-const ORIGINURLLOCAL = "http://localhost:8080";
-const ORIGINURLAPP = "https://booksrfriendsapp.herokuapp.com";
+    // call from constants
+    'CALLFROMHOME' : "callFromHomePage",
+    'CALLFROMUSER' : "callFromUserPage",
+    'CALLFROMLIBRARY' : "callFromLibraryPage",
 
-// call from constants
-const CALLFROMHOME = "callFromHomePage";
-const CALLFROMUSER = "callFromUserPage";
-const CALLFROMLIBRARY = "callFromLibraryPage";
+    'ACCESS_TOKEN_KEY' : 'access-token'
+};
 
-const ACCESS_TOKEN_KEY = 'access-token';
