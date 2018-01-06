@@ -10,7 +10,7 @@ class Library extends Component {
         super(props);
 
         this.state ={
-
+            BookList: [],
             SearchList : [],
             EmptySearchList : '',
             selectedFilterText:'',
@@ -22,6 +22,29 @@ class Library extends Component {
         this.onChangeFilterValueHandler = this.onChangeFilterValueHandler.bind(this);
         this.onSearchClickHandler = this.onSearchClickHandler.bind(this);
         this.AddFavoriteBookHandler = this.AddFavoriteBookHandler.bind(this);
+    }
+
+    componentWillMount(){
+        console.log(Config.URLBOOKSAPI);
+        fetch(Config.URLBOOKSAPI,{
+            method:'GET',
+            mode: 'cors',
+            headers: {
+                'dataType': 'json',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
+                'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
+                'Access-Control-Allow-Headers': 'Content-Type'
+            }
+        })
+        .then(results => {
+            return results.json();
+        })
+        .then(json => {
+            console.log(json);
+            this.setState({BookList:json})
+        });
     }
 
     onChangeFilterTextHandler(e){
@@ -121,36 +144,30 @@ class Library extends Component {
 
     onSearchClickHandler(){
 
-        var searchText = 'filterText';
-        var searchValue = 'filterValue';
+        let filterValue=this.state.selectedFilterValue;
 
-        var filterText=this.state.selectedFilterText;
-        var filterValue=this.state.selectedFilterValue;
+        let mainBooksList = this.state.BookList;
 
-        let url = Config.URLBOOKSAPI + '/' + '?'+ searchText + '=' + filterText+'&'+ searchValue + '='+ escape(filterValue);
+        let searchList = [];
 
-        fetch(url ,{
-            method:'GET',
-            mode: 'cors',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
-                'Access-Control-Allow-Headers': 'Content-Type'
-            }
-        })
-        .then(results =>{
-            return results.json();
-        })
-        .then(json => {
-            this.setState({SearchList:json});
-        })
-        .then(json => {
-            if(this.state.SearchList.length === 0){
-                this.setState({EmptySearchList:'No Results Found'});
-            }
+         searchList = mainBooksList.filter(book => {
+            console.log(book["title"]);
+            console.log(book["title"].toLowerCase().indexOf("asp"));
+
+            return (
+                book["title"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1 ||
+                book["author"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1||
+                book["publication"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1
+            )
         });
+
+        if(searchList && searchList.length > 0){
+            this.setState({SearchList:searchList});
+            console.log(searchList);
+        }
+        else
+            this.setState({EmptySearchList:"No Results Found!!!"});
+
     }
 
     render(){
@@ -174,15 +191,10 @@ class Library extends Component {
                             <div>
                                 <h1>Search Catalog</h1>
                                 <div className="input-group">
-                                       <select id="searchby" name="searchby" className="input-group form-control col-sm-4" value={this.state.selectedFilterText} onChange={this.onChangeFilterTextHandler}>
-                                            <option value="publication" defaultValue="publication">Publication</option>
-                                            <option value="author">Author</option>
-                                            <option value="title">Title</option>
-                                        </select>
-                                    <div className="input-group col-sm-1"></div>
-                                    <input type="text" className="form-control input-group col-sm-4" value={this.state.selectedFilterValue} onChange={this.onChangeFilterValueHandler} placeholder="Search"></input>
-                                    <div className="input-group-btn col-sm-2">
-                                        <button className="btn btn-default btn-block-sm" type="submit" onClick={this.onSearchClickHandler}>
+
+                                    <input type="text" className="form-control input-group col-sm-10 " value={this.state.selectedFilterValue} onChange={this.onChangeFilterValueHandler} placeholder="Search"></input>
+                                    <div className="input-group-btn">
+                                        <button className="btn btn-default btn-block-lg" type="submit" onClick={this.onSearchClickHandler}>
                                             <i className="glyphicon glyphicon-search"></i>
                                         </button>
                                     </div>

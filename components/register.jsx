@@ -12,10 +12,7 @@ class Register extends Component{
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.onChangeFirstNameHandler = this.onChangeFirstNameHandler.bind(this);
         this.onChangeLastNameHandler = this.onChangeLastNameHandler.bind(this);
-        this.onChangeDOBHandler = this.onChangeDOBHandler.bind(this);
-        this.onChangeAddressHandler = this.onChangeAddressHandler.bind(this);
         this.onChangeEmailIdHandler = this.onChangeEmailIdHandler.bind(this);
-        this.onChangeOccupationHandler = this.onChangeOccupationHandler.bind(this);
         this.onChangeUserNameHandler = this.onChangeUserNameHandler.bind(this);
         this.onChangePasswordHandler = this.onChangePasswordHandler.bind(this);
         this.onChangeConfpasswordHandler = this.onChangeConfpasswordHandler.bind(this);
@@ -29,15 +26,6 @@ class Register extends Component{
 
             lastName:null,
             lastNameValid:false,
-
-            dateOfBirth:null,
-            dobValid:false,
-
-            occupation :null,
-            occupationValid:false,
-
-            address:null,
-            addressValid:false,
 
             emailId:null,
             emailIdValid:false,
@@ -61,8 +49,7 @@ class Register extends Component{
 
         this.setState({counter: this.state.counter+1});
 
-        if(this.state.firstNameValid && this.state.lastNameValid && this.state.dobValid &&
-            this.state.addressValid && this.state.emailIdValid && this.state.occupationValid &&
+        if(this.state.firstNameValid && this.state.lastNameValid && this.state.emailIdValid &&
             this.state.userNameValid && this.state.passwordValid && this.state.confPasswordValid ){
 
             this.setState({validForm: true});
@@ -82,9 +69,6 @@ class Register extends Component{
                     "lastName": this.state.lastName,
                     "username":this.state.userName,
                     "password":this.state.password,
-                    "dateOfBirth":this.state.dateOfBirth,
-                    "address":this.state.address,
-                    "occupation":this.state.occupation,
                     "emailId":this.state.emailId,
                     "confirmPassword":this.state.confPassword
                 })
@@ -110,7 +94,6 @@ class Register extends Component{
     }
 
     onChangeFirstNameHandler(e){
-
         this.setState({firstName:e.target.value});
         if(e.target.value != "" ) {
             this.setState({firstNameValid: true});
@@ -130,26 +113,6 @@ class Register extends Component{
         }
     }
 
-    onChangeDOBHandler(e){
-        this.setState({dateOfBirth:e.target.value});
-        if(e.target.value != "" ) {
-            this.setState({dobValid: true});
-        }
-        else{
-            this.setState({dobValid: false});
-        }
-    }
-
-    onChangeAddressHandler(e){
-        this.setState({address:e.target.value});
-        if(e.target.value != "" ) {
-            this.setState({addressValid : true});
-        }
-        else{
-            this.setState({addressValid: false});
-        }
-    }
-
     onChangeEmailIdHandler(e){
         this.setState({emailId:e.target.value});
         if(e.target.value != "" ) {
@@ -157,16 +120,6 @@ class Register extends Component{
         }
         else{
             this.setState({emailIdValid: false});
-        }
-    }
-
-    onChangeOccupationHandler(e){
-        this.setState({occupation:e.target.value});
-        if(e.target.value != "" ) {
-            this.setState({occupationValid : true});
-        }
-        else{
-            this.setState({occupationValid: false});
         }
     }
 
@@ -214,7 +167,8 @@ class Register extends Component{
                     </div>
                     <div className="col-sm-12">
                         <form onSubmit={this.handleFormSubmit}>
-                            <div className="form-group">
+
+                            <div className="form-group col-sm-6">
                                 <label htmlFor="firstName">First Name:</label>
 
                                 <input type="text" className="form-control"
@@ -227,54 +181,19 @@ class Register extends Component{
                                 }
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group col-sm-6">
                                 <label htmlFor="lastName">Last Name:</label>
                                 <input type="text" className="form-control"
                                        id="lastName" placeholder="Enter Last Name"
                                        onChange={this.onChangeLastNameHandler}></input>
                                 {((!this.state.lastNameValid && this.state.counter === 0) || (this.state.lastNameValid && this.state.counter > 0))?
                                     null : <div className="alert alert-warning">
-                                                <strong>Warning!</strong> Please enter Last Name
-                                            </div>
+                                        <strong>Warning!</strong> Please enter Last Name
+                                    </div>
                                 }
                             </div>
 
-                            <div className="form-group">
-                                <label htmlFor="dateofbirth">Date of Birth:</label>
-                                <input type="date" className="form-control"
-                                       id="dateofbirth" placeholder="Date of Birth"
-                                       onChange={this.onChangeDOBHandler}></input>
-                                {((!this.state.dobValid && this.state.counter === 0) || (this.state.dobValid && this.state.counter > 0))?
-                                    null : <div className="alert alert-warning">
-                                                 <strong>Warning!</strong> Please enter Date of Birth
-                                            </div>
-                                }
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="occupation">Occupation:</label>
-                                <input type="text" className="form-control"
-                                       id="occupation" placeholder="Enter Occupation"
-                                       onChange={this.onChangeOccupationHandler}></input>
-                                {((!this.state.occupationValid && this.state.counter === 0) || (this.state.occupationValid && this.state.counter > 0))?
-                                    null : <div className="alert alert-warning">
-                                                <strong>Warning!</strong> Please enter Occupation
-                                            </div>
-                                }
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="address">Address:</label>
-                                <input type="text" className="form-control"
-                                       id="address" placeholder="Enter Address"
-                                       onChange={this.onChangeAddressHandler}></input>
-                                {((!this.state.addressValid && this.state.counter === 0) || (this.state.addressValid && this.state.counter > 0))?
-                                    null : <div className="alert alert-warning">
-                                        <strong>Warning!</strong> Please enter Address
-                                    </div>}
-                            </div>
-
-                            <div className="form-group">
+                            <div className="form-group col-sm-6">
                                 <label htmlFor="emailId">E-mail ID:</label>
                                 <input type="email" className="form-control"
                                        id="emailId" placeholder="Enter E mail Id"
@@ -286,7 +205,7 @@ class Register extends Component{
                                 }
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group col-sm-6">
                                 <label htmlFor="userName">User Name:</label>
                                 <input type="text" className="form-control"
                                        id="userName" placeholder="Enter UserName"
@@ -298,38 +217,37 @@ class Register extends Component{
                                 }
                             </div>
 
-                            <div className="form-group">
+                           <div className="form-group col-sm-6">
                                 <label htmlFor="password">Password:</label>
                                 <input type="password" className="form-control"
                                        id="password" placeholder="Enter password"
                                        onChange={this.onChangePasswordHandler}></input>
                                 {((!this.state.passwordValid && this.state.counter === 0) || (this.state.passwordValid && this.state.counter > 0))?
                                     null : <div className="alert alert-warning">
-                                                <strong>Warning!</strong> Please enter Password
-                                            </div>
+                                        <strong>Warning!</strong> Please enter Password
+                                    </div>
                                 }
                             </div>
 
-                            <div className="form-group">
+                            <div className="form-group col-sm-6">
                                 <label htmlFor="confpassword">Confirm Password:</label>
                                 <input type="password" className="form-control"
                                        id="confpassword" placeholder="Enter Confirm password"
                                        onChange={this.onChangeConfpasswordHandler}></input>
                                 {((!this.state.confPasswordValid && this.state.counter === 0) || (this.state.confPasswordValid && this.state.counter > 0))?
                                     null : <div className="alert alert-warning">
-                                                <strong>Warning!</strong> Please enter Confirm Password same as password
-                                            </div>
+                                        <strong>Warning!</strong> Please enter Confirm Password same as password
+                                    </div>
                                 }
                             </div>
 
+
                             <div className="row col-sm-12">
-                                <div className="col-sm-5">
-                                    <button type="submit" className="btn btn-primary btn btn-lg col-sm-2">
-                                        Register
-                                    </button>
+                                <div className="col-sm-6">
+                                    <button type="submit" className="btn btn-primary btn btn-lg col-sm-2">Register</button>
                                 </div>
 
-                                <div className="col-sm-5">
+                                <div className="col-sm-6">
                                     <button type="button" className="btn btn-primary btn btn-lg col-sm-2" >Cancel</button>
                                 </div>
                             </div>
