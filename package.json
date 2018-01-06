@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "postinstall": "webpack -p",
-    "start" : "webpack-dev-server --hot"
+    "start" : "node server.js"
   },
   "author": "",
   "license": "ISC",
