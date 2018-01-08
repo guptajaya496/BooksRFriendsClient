@@ -99,6 +99,27 @@ class MyFavoriteBooksList extends Component{
 
     onChangeFilterValueHandler(e){
         this.setState({selectedFilterValue:e.target.value});
+
+        let filterValue= this.state.selectedFilterValue;
+
+        let mainBooksList = this.state.BookList;
+
+        let searchList = [];
+
+        searchList = mainBooksList.filter(book => {
+            return (
+                book["title"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1 ||
+                book["author"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1||
+                book["publication"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1
+            )
+        });
+
+        if(searchList && searchList.length > 0){
+            this.setState({SearchList:searchList});
+            console.log(searchList);
+        }
+        else
+            this.setState({EmptySearchList:"No Results Found!!!"});
     }
 
     AddFavoriteBookHandler(bookObj){
@@ -172,8 +193,6 @@ class MyFavoriteBooksList extends Component{
         let searchList = [];
 
         searchList = mainBooksList.filter(book => {
-            console.log(book["title"]);
-            console.log(book["title"].toLowerCase().indexOf("asp"));
 
             return (
                 book["title"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1 ||
@@ -188,7 +207,6 @@ class MyFavoriteBooksList extends Component{
         }
         else
             this.setState({EmptySearchList:"No Results Found!!!"});
-
     }
 
     RemoveFavoriteBookHandler(bookObj){
