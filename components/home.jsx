@@ -20,7 +20,7 @@ class Home extends Component{
                     <MainBooksList/>
                 </div>
 
-                <div className="row row-header">
+                <div className="row ">
                     <div className="col-sm-12">
                         <Footer/>
                     </div>

@@ -5,7 +5,7 @@ class Footer extends Component{
 
     render(){
         return(
-            <footer className="row-footer" style={{position:'relative'}}>
+            <footer className="row-footer navbar-static-bottom" >
                 <div className="row">
                     <div className="col-xs-5 col-xs-offset-1 col-sm-2 col-sm-offset-1">
                         <h5>Links</h5>

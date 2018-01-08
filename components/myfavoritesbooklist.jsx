@@ -16,14 +16,12 @@ class MyFavoriteBooksList extends Component{
             ACCESS_TOKEN : '',
             SearchList : [],
             EmptySearchList : '',
-            selectedFilterText:'',
             selectedFilterValue:''
         };
 
         this.AddFavoriteBookHandler = this.AddFavoriteBookHandler.bind(this);
         this.RemoveFavoriteBookHandler = this.RemoveFavoriteBookHandler.bind(this);
         this.openEbookHandler = this.openEbookHandler.bind(this);
-        this.onChangeFilterTextHandler = this.onChangeFilterTextHandler.bind(this);
         this.onChangeFilterValueHandler = this.onChangeFilterValueHandler.bind(this);
         this.onSearchClickHandler = this.onSearchClickHandler.bind(this);
         this.AddFavoriteBookHandler = this.AddFavoriteBookHandler.bind(this);
@@ -99,10 +97,6 @@ class MyFavoriteBooksList extends Component{
         );
     }
 
-    onChangeFilterTextHandler(e){
-        this.setState({selectedFilterText:e.target.value});
-    }
-
     onChangeFilterValueHandler(e){
         this.setState({selectedFilterValue:e.target.value});
     }
@@ -113,7 +107,7 @@ class MyFavoriteBooksList extends Component{
 
         console.log("AddFavoriteBookHandler");
 
-        if(token != ''){
+        if(token !== null){
 
             const bookId = bookObj._id;
 
@@ -173,7 +167,7 @@ class MyFavoriteBooksList extends Component{
 
         let filterValue=this.state.selectedFilterValue;
 
-        let mainBooksList = this.state.BookList;
+        let mainBooksList = this.state.MainBookList;
 
         let searchList = [];
 
@@ -294,20 +288,12 @@ class MyFavoriteBooksList extends Component{
                                 <h1>Search Catalog</h1>
                                 <div className="input-group col-sm-1"></div>
                                 <div className="input-group">
-                                    <select id="searchby" name="searchby" className="input-group col-sm-4" value={this.state.selectedFilterText} onChange={this.onChangeFilterTextHandler}>
-                                        <option value="select" defaultValue="title">Please Select Value</option>
-                                        <option value="publication">Publication</option>
-                                        <option value="author">Author</option>
-                                        <option value="title">Title</option>
-                                    </select>
-                                    <div className="input-group col-sm-1"></div>
-                                    <input type="text" className=" input-group col-sm-4" value={this.state.selectedFilterValue} onChange={this.onChangeFilterValueHandler} placeholder="Search"></input>
-                                    <div className="input-group-btn col-sm-2">
-                                        <button className="btn btn-default btn-block-sm" type="submit" onClick={this.onSearchClickHandler}>
+                                    <input type="text" className="form-control input-group col-sm-10 " value={this.state.selectedFilterValue} onChange={this.onChangeFilterValueHandler} placeholder="Search"></input>
+                                    <div className="input-group-btn">
+                                        <button className="btn btn-default btn-block-lg" type="submit" onClick={this.onSearchClickHandler}>
                                             <i className="glyphicon glyphicon-search"></i>
                                         </button>
                                     </div>
-
                                 </div>
                                 <div className="containerPadding"></div>
                                 <div>

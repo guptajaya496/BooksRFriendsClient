@@ -300,3 +300,7 @@ body {
     display: inline-block;
     color: #ffffff;
 }
+
+.body{
+    padding-bottom: 10px;
+}

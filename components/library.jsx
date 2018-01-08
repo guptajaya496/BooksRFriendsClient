@@ -13,12 +13,10 @@ class Library extends Component {
             BookList: [],
             SearchList : [],
             EmptySearchList : '',
-            selectedFilterText:'',
             selectedFilterValue:'',
             MyFavoriteList: []
         };
 
-        this.onChangeFilterTextHandler = this.onChangeFilterTextHandler.bind(this);
         this.onChangeFilterValueHandler = this.onChangeFilterValueHandler.bind(this);
         this.onSearchClickHandler = this.onSearchClickHandler.bind(this);
         this.AddFavoriteBookHandler = this.AddFavoriteBookHandler.bind(this);
@@ -47,12 +45,29 @@ class Library extends Component {
         });
     }
 
-    onChangeFilterTextHandler(e){
-        this.setState({selectedFilterText:e.target.value});
-    }
-
     onChangeFilterValueHandler(e){
         this.setState({selectedFilterValue:e.target.value});
+
+        let filterValue= this.state.selectedFilterValue;
+
+        let mainBooksList = this.state.BookList;
+
+        let searchList = [];
+
+        searchList = mainBooksList.filter(book => {
+            return (
+                book["title"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1 ||
+                book["author"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1||
+                book["publication"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1
+            )
+        });
+
+        if(searchList && searchList.length > 0){
+            this.setState({SearchList:searchList});
+            console.log(searchList);
+        }
+        else
+            this.setState({EmptySearchList:"No Results Found!!!"});
     }
 
     AddFavoriteBookHandler(bookObj){
@@ -61,81 +76,58 @@ class Library extends Component {
 
         console.log(token);
 
-        if(token != ''){
+        console.log("AddFavoriteBookHandler");
 
-            const newMyListState = this.state.MyFavoriteList;
+        if(token !== null){
 
             const bookId = bookObj._id;
 
-            if(newMyListState.length === 0){
-
-                fetch(Config.URLFAVORITESAPI , {
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                        'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
-                        'Access-Control-Allow-Headers': 'Content-Type'
-                    },
-                    body:JSON.stringify({
-                        "title": bookObj.title,
-                        "author": bookObj.author,
-                        "publication": bookObj.publication,
-                        "image": bookObj.image,
-                        "path": bookObj.path,
-                        "featured" : ' '
-                    })
+            fetch(Config.URLFAVORITESAPI , {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
+                    'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
+                    'Access-Control-Allow-Headers': 'Content-Type',
+                    'x-access-token' : token
+                },
+                body:JSON.stringify({
+                    bookId
                 })
-                    .then(results => {
-                        this.setState({Results:results});
-                    })
-                    .then((favlist)=>{fetch(Config.URLFAVORITESAPI)
-                        .then(results =>results.json())
-                        .then(json => {
-                            this.setState({MyFavoriteList:json});
-                        });
-                    });
-            }
-            else{
-                if((newMyListState.filter(book => book._id === bookId)).length > 0){
+            })
+                .then(results => {
+                    if(results !== null){
+                        return results.json();
+                    }
+                })
+                .then(json => {
+                    if(json !== null){
+                        console.log(json.books);
+                        this.setState({FavoriteBookList:json.books});
+                        console.log(this.state.FavoriteBookList);
+                    }
+                })
+                .then(res =>{
+                    let temp = [];
 
-                    alert("Item is already in the list");
+                    if(this.state.FavoriteBookList){
+                        console.log(this.state.FavoriteBookList.length);
+                        if(this.state.FavoriteBookList.length > 0){
+                            for(let i=0; i <this.state.MainBookList.length; i++){
+                                for(let j=0; j<this.state.FavoriteBookList.length; j++){
+                                    if(this.state.MainBookList[i]._id === this.state.FavoriteBookList[j]){
+                                        temp.push(this.state.MainBookList[i]);
+                                    }
+                                }
+                            }
 
-                    this.setState({MyList:newMyListState});
-                }
-                else{
-
-                    fetch(Config.URLFAVORITESAPI , {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'Access-Control-Allow-Methods': ['OPTIONS', 'GET', 'POST', 'PUT', 'DELETE'],
-                            'Access-Control-Allow-Origin': Config.ORIGINURLAPP,
-                            'Access-Control-Allow-Headers': 'Content-Type'
-                        },
-                        body:JSON.stringify({
-                            "title": bookObj.title,
-                            "author": bookObj.author,
-                            "publication": bookObj.publication,
-                            "image": bookObj.image,
-                            "path": bookObj.path
-                        })
-                    })
-                    .then(results => {
-                        this.setState({Results:results});
-                    })
-                    .then((favlist)=>{fetch(Config.URLFAVORITESAPI)
-                        .then(results =>results.json())
-                        .then(json => {
-                            this.setState({MyFavoriteList:json});
-                        });
-                    });
-                }
-            }
+                            this.setState({MyFavoriteList:temp});
+                            console.log("temp : " ,temp);
+                        }
+                    }
+                });
         }
         else{
             alert("Please login to add to the favorites!!!");
@@ -151,9 +143,6 @@ class Library extends Component {
         let searchList = [];
 
          searchList = mainBooksList.filter(book => {
-            console.log(book["title"]);
-            console.log(book["title"].toLowerCase().indexOf("asp"));
-
             return (
                 book["title"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1 ||
                 book["author"].toLowerCase().indexOf(filterValue.toLowerCase()) != -1||
@@ -214,7 +203,6 @@ class Library extends Component {
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
