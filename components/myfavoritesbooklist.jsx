@@ -102,7 +102,7 @@ class MyFavoriteBooksList extends Component{
 
         let filterValue= this.state.selectedFilterValue;
 
-        let mainBooksList = this.state.BookList;
+        let mainBooksList = this.state.MainBookList;
 
         let searchList = [];
 
